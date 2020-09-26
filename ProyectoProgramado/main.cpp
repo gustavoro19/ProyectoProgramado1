@@ -1,15 +1,20 @@
 // ProyectoProgramado.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-// Estudiantes: Ricardo Morataya Sandoval, Gustavo Rojas,Sergio Piedra,Emily Rojas,Veronica Delgado
-// Objetivo del programa: Crear un sistema de reserva de citas medicas
-// Fecha de entrega: 23/04/2018
-// Curso: Fundamentos de Informática, Universidad Nacional, Campus Nicoya. Prof. EVB.
+// Estudiante: Gustavo Rojas Porras
+// Objetivo del programa: Crear un sistema para manejar la data del Censo
+// Curso: Programacion 1, Universidad Nacional, Campus Nicoya. Prof. EVB.
 
 #include <iostream>
 #include <string>
 #include <stdlib.h>
 #include <conio.h>
+#include <math.h>
 #include <windows.h>
+#include "List.h"
+#include "Municipio.h"
+#include "Pais.h"
+#include "Nodo.h"
+
 
 #define ARRIBA 72
 #define ABAJO 80
@@ -26,7 +31,7 @@ void gotoxy(int x, int y);
 
 int main()
 {
-    //Collection Appo;
+    
     system("COLOR F0");
     system("mode con: cols=106 lines=15");
     menu_principal();
@@ -36,7 +41,7 @@ int main()
     system("pause>nul");
     return 0;
 }
-
+// crea el menu principal de la aplicion, asi como invocar las funciones que hacen cosas especificas de las clases.
 void menu_principal()
 {
 
@@ -44,9 +49,9 @@ void menu_principal()
     bool repite = true;
 
     const char* titulo = "Censo 2001";
-    const char* opciones[] = { "RESERVAR CITA","VERIFICAR DISPONIBILIDAD DE CITA","ESTADO DE CITAS","CANTIDAD DE CITAS RESERVADAS", "CANTIDAD DE CITAS DISPONIBLES", "CANCELAR CITA", "SALIR" };
+    const char* opciones[] = { "AGREGAR PERSONAS","MUNICIPIO","PAIS","SALIR" };
 
-    int n = 7;
+    int n = 4;
 
     do {
         opcion = menu(titulo, opciones, n);
@@ -68,21 +73,6 @@ void menu_principal()
             enter();
             break;
         case 4:
-            system("cls");
-           // cantReserv(Appo);
-            enter();
-            break;
-        case 5:
-            system("cls");
-            //cantAvailability(Appo);
-            enter();
-            break;
-        case 6:
-            system("cls");
-           // deleteAppoint(Appo);
-            enter();
-            break;
-        case 7:
             repite = false;
             break;
 
@@ -90,6 +80,7 @@ void menu_principal()
     } while (repite);
 }
 
+//Creala plantilla para el menu
 int menu(const char* titulo, const char* opciones[], int n)
 {
     int opcionSeleccionada = 1;
@@ -148,6 +139,7 @@ int menu(const char* titulo, const char* opciones[], int n)
     return opcionSeleccionada;
 }
 
+//se utiliza como sustito del system("Pause") y poder imprimirlo en espaniol
 void enter()
 {
     int tecla;
@@ -158,7 +150,7 @@ void enter()
 }
 
 
-
+//son las instrucciones de como utilizar el programa
 void instrucciones()
 {
     gotoxy(50, 2);
@@ -168,24 +160,19 @@ void instrucciones()
     gotoxy(50, 5);
     cout << "| 2.USE LAS TECLA ABAJO PARA BAJAR EN EL MENU.";
     gotoxy(50, 6);
-    cout << "| 3.USE LAS TECLA ENTER PARA SELECCIOAR.";
+    cout << "| 3.USE LAS TECLA ENTER PARA SELECCIONAR.";
     gotoxy(50, 7);
     cout << "|";
     gotoxy(50, 8);
-    cout << "| CREADORES:";
+    cout << "| PROYECTO DE PROGRAMACION 1 POR:";
     gotoxy(50, 9);
-    cout << "| 1.RICARDO MORATAYA";
+    cout << "| GUSTAVO ROJAS PORRAS";
     gotoxy(50, 10);
-    cout << "| 2.GUSTAVO ROJAS";
+    cout << "| TODOS LOS DERECHOS RESERVADOS";
     gotoxy(50, 11);
-    cout << "| 3.SERGIO PIEDRA";
-    gotoxy(50, 12);
-    cout << "| 4.EMILY ROJAS";
-    gotoxy(50, 13);
-    cout << "| 5.VERONICA DELGADO";
 }
 
-
+//Se te utiliza para especificar en que parte se quiere imprimir la informacion en la consola
 void gotoxy(int x, int y) {
     HANDLE hcon;
     hcon = GetStdHandle(STD_OUTPUT_HANDLE);

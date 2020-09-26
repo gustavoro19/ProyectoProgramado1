@@ -139,7 +139,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ProyectoProgramado.cpp" />
+    <ClCompile Include="Municipio.cpp" />
+    <ClCompile Include="Nodo.cpp" />
+    <ClCompile Include="Pais.cpp" />
+    <ClCompile Include="List.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Municipio.h" />
+    <ClInclude Include="Nodo.h" />
+    <ClInclude Include="Pais.h" />
+    <ClInclude Include="List.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
