@@ -7,9 +7,10 @@ Municipio::Municipio()
 double Municipio::ObtenerPrima()
 {
 	return 0.0;
+
 }
 
-long Municipio::totalHabintantes()
+long Municipio::totalHabitantes()
 {
 	return 0;
 }

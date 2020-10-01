@@ -20,7 +20,7 @@ public:
 	double sumarPrimas();
 	Municipio municipioMayor();
 	Municipio MunicipioMenor();
-	Pais(List Municipio);
+	Pais(List municipio);
 	
 };
 

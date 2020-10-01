@@ -1,6 +1,8 @@
 #include "Pais.h"
 
-Pais::Pais(List Municipio){}
+Pais::Pais(List municipio){
+	municipio = Municipios;
+}
 
 long Pais::totalHabitantes()
 {

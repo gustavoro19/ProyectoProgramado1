@@ -19,7 +19,9 @@ public:
 	long cantNinias;
 	Municipio();
 	double ObtenerPrima();
-	long totalHabintantes();
+	long totalHabitantes();
+	
+
 	
 };
 

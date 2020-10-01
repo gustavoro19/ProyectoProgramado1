@@ -7,12 +7,18 @@
 #include "Municipio.h"
 
 using namespace std;
-class Nodo
+
+
+class Nodo 
 {
 public:
-	Municipio municipio;
-	Nodo* next;
-	Nodo(Municipio data);
+	Nodo();
+	Nodo( Municipio );
+	Municipio *municipio;
+	Nodo *next;
+	void borrar_todo();
+	void print();
+	~Nodo();
 };
 
 #endif
