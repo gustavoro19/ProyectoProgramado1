@@ -21,6 +21,11 @@
 #define ENTER 13
 
 using namespace std;
+long sumaHabitantes, sumaPrimas = 0;
+int numeroMunicipios = 0;
+Municipio municipio[50];
+List Lista;
+//Pais pais;
 void enter();
 void menu_principal();
 int menu(const char* titulo, const char* opciones[], int n);
@@ -33,7 +38,7 @@ int main()
 {
     
     system("COLOR F0");
-    system("mode con: cols=106 lines=15");
+    system("mode con: cols=106 lines=30");
     menu_principal();
     system("cls");
     gotoxy(25, 7);
@@ -52,6 +57,7 @@ void menu_principal()
     const char* opciones[] = { "AGREGAR PERSONAS","MUNICIPIO","PAIS","SALIR" };
 
     int n = 4;
+    
 
     do {
         opcion = menu(titulo, opciones, n);
@@ -59,17 +65,86 @@ void menu_principal()
         {
         case 1:
             system("cls");
-            //reservAppoint(Appo);
+            cout << "Bienvenido al Censo 2001" << endl;
+                cout << "Por favor ingrese el numero de Municipios Censados" << endl;
+                cin >> numeroMunicipios;
+                for (int i = 0; i < numeroMunicipios; i++)
+                {
+
+                    municipio[i].solicitarInfo(i);
+                    municipio[i].ObtenerPrima(i);
+                    municipio[i].totalHabitantes(i);
+                    Lista.insertarInicio(municipio->cantidadMunicipios);
+                }
+                
             enter();
             break;
         case 2:
             system("cls");
-            //availability(Appo);
+            if (numeroMunicipios != 0) {
+                cout << "Cantidad total de Municipios: " << numeroMunicipios;
+                for (int i = 0; i < numeroMunicipios; i++)
+                {
+                    cout << "Municipio numero: " << i + 1 << endl;
+                    cout << "Nombre del Municipio: " << municipio[i].nombreMunicipio << endl;
+                    cout << "Cantidad de ancianos hombres: " << municipio[i].cantAncianosHombres << endl;
+                    cout << "Cantidad de ancianas mujeres: " << municipio[i].cantAncianosMujeres << endl;
+                    cout << "Cantidad de adultos hombres: " << municipio[i].cantHombres << endl;
+                    cout << "Cantidad de adultas mujeres: " << municipio[i].cantMujeres << endl;
+                    cout << "Cantidad de ninos : " << municipio[i].cantNinios << endl;
+                    cout << "Cantidad de ninas : " << municipio[i].cantNinias << endl;
+                    cout << "Cantidad Total de habitantes en el municipio: " << municipio[i].totalHabitantesMunicipio[i] << endl;
+                    cout << "Cantidad de Prima por Mantenimiento de ninios:  " << municipio[i].prima[i] << endl;
+                }
+            }
             enter();
             break;
         case 3:
             system("cls");
-           // stateAppoint(Appo);
+            cout << "Censo del Pais Costa Rica" << endl;
+            if (numeroMunicipios != 0) {
+
+
+
+                for (int i = 0; i < numeroMunicipios; i++)
+                {
+                    sumaHabitantes = sumaHabitantes + municipio[i].totalHabitantesMunicipio[i];
+                    sumaPrimas = sumaPrimas + municipio[i].prima[i];
+
+                }
+                int temporal;
+                for (long i = 0; i < numeroMunicipios; i++)
+                {
+                    for (long j = 0; j < numeroMunicipios - 1; j++)
+                    {
+                        if (municipio[j].totalHabitantesMunicipio[j] < municipio[j + 1].totalHabitantesMunicipio[j + 1]) {
+                            temporal = municipio[j].totalHabitantesMunicipio[j];
+                            municipio[j].totalHabitantesMunicipio[j] = municipio[j+1].totalHabitantesMunicipio[j + 1];
+                            municipio[j+1].totalHabitantesMunicipio[j + 1] = temporal;
+                        }
+                    }
+                }
+                cout << "La cantidad total de habitantes en el pais es de: " << sumaHabitantes << endl;
+                cout << "Total de primas por nino en el pais es de: " << sumaPrimas << endl;
+                cout << "El municipio menor es : " << municipio[0].nombreMunicipio << endl;
+                
+                for (long i = 0; i < numeroMunicipios; i++)
+                {
+                    for (long j = 0; j < numeroMunicipios - 1; j++)
+                    {
+                        if (municipio[j].totalHabitantesMunicipio[j] > municipio[j + 1].totalHabitantesMunicipio[j + 1]) {
+                            temporal = municipio[j].totalHabitantesMunicipio[j];
+                            municipio[j].totalHabitantesMunicipio[j] = municipio[j+1].totalHabitantesMunicipio[j + 1];
+                            municipio[j+1].totalHabitantesMunicipio[j + 1] = temporal;
+                        }
+                    }
+                }
+                cout << "El municipio mayor :" << municipio[0].nombreMunicipio << endl;
+            }
+            else {
+                cout << "Por favor ingresar la informacion necesaria para contar los habitantes y calcular las primas" << endl;
+            }
+            
             enter();
             break;
         case 4:
@@ -147,6 +222,7 @@ void enter()
     do {
         tecla = _getch();
     } while (tecla != ENTER);
+
 }
 
 

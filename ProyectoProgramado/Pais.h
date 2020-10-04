@@ -4,24 +4,21 @@
 #include <sstream>
 #include <iostream>
 #include <string>
-#include "List.h"
+#include "Nodo.h"
 #include "Municipio.h"
-
-using namespace std;
 
 class Pais
 {
-private:
-	
-	List Municipios;
-
 public:
-	long totalHabitantes();
+	Pais();
+	long totalHabitantesPais();
 	double sumarPrimas();
 	Municipio municipioMayor();
-	Municipio MunicipioMenor();
-	Pais(List municipio);
-	
+	Municipio municipioMenor();
+	~Pais();
+
+private:
+
 };
 
 #endif

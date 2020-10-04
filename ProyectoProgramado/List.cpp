@@ -4,27 +4,27 @@
 List::List():head(NULL){
 }
 
-void List::insertarInicio(Municipio data)
+void List::insertarInicio(int val)
 {
-	Nodo *node = new Nodo(data);
+	Nodo *node = new Nodo(val);
 	node->next = this->head;
 	this->head = node;
 }
 
-void List::insertaFinal(Municipio data)
+void List::insertaFinal(int val)
 {
 	if (head == NULL) {
-		insertarInicio(data);
+		insertarInicio(val);
 		return;
 	}
-	Nodo *node = new Nodo(data);
+	Nodo *node = new Nodo(val);
 	Nodo *ptr = this->head;
 	while (ptr->next != NULL) {
 		ptr = ptr->next; 
 	}
 }
 
-void List::remover(Municipio data)
+void List::remover(int val)
 {
 }
 
@@ -33,9 +33,10 @@ void List::print()
 	Nodo *node = this->head;
 	while (node != NULL)
 	{
-		cout << node << "->";
+		cout << node->data <<endl;
 		node = node->next;
 	}
+	cout << endl;
 	
 }
 

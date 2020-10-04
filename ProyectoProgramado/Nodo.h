@@ -12,12 +12,11 @@ using namespace std;
 class Nodo 
 {
 public:
-	Nodo();
-	Nodo( Municipio );
-	Municipio *municipio;
+	
+	int data;
 	Nodo *next;
+	Nodo(int);
 	void borrar_todo();
-	void print();
 	~Nodo();
 };
 

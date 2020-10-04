@@ -6,17 +6,18 @@
 #include <string>
 #include "Nodo.h"
 #include "Municipio.h"
+#include "Pais.h"
 
 using namespace std; 
 
-class List
+class List 
 {
 public:
-	Nodo *head;
+	Nodo* head;
 	List();
-	void insertarInicio(Municipio data);
-	void insertaFinal(Municipio data);
-	void remover(Municipio data);
+	void insertarInicio( int val);
+	void insertaFinal(int val);
+	void remover(int val);
 	void print();
 	~List();
 

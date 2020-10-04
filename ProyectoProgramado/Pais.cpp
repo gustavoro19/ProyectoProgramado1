@@ -1,10 +1,13 @@
 #include "Pais.h"
+#include "Municipio.h"
 
-Pais::Pais(List municipio){
-	municipio = Municipios;
+Pais::Pais(){
+
 }
 
-long Pais::totalHabitantes()
+
+
+long Pais::totalHabitantesPais()
 {
 	return 0;
 }
@@ -19,8 +22,13 @@ Municipio Pais::municipioMayor()
 	return Municipio();
 }
 
-Municipio Pais::MunicipioMenor()
+
+
+Municipio Pais::municipioMenor()
 {
 	return Municipio();
 }
 
+Pais::~Pais()
+{
+}
